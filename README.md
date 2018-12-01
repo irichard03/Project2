@@ -4,7 +4,9 @@ Project2
 
 Proposal
 ------
-We *propose* to build a Datbase Migration tool to remediate some of the hassles of migrating 
+We *propose* to build a Datbase Migration tool to remediate some of the hassles of migrating .
+
+![](aww-board.png)
 
 Checklist to Include:
 
