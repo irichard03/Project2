@@ -1,0 +1,8 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Federico Paredes, Ian Richard",
+  "license": "MIT",
+  "proxy": "http://localhost:3001/"
+}
