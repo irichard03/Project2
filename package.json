@@ -14,7 +14,7 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
-    "pull-dev-and-merge": "git pull origin development; git merge feature/fed"
+    "pull-dev-and-merge": "git pull origin development && git merge feature/fed"
   },
   "license": "ISC",
   "dependencies": {
