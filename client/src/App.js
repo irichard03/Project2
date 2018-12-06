@@ -5,9 +5,6 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      
-      function desolateReactComponent(props){
-        return(
           //this title has been approved by noone
           <div class="container">
             <div class="container-fluid bg-success">
@@ -22,10 +19,7 @@ class App extends Component {
               <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
             </div>
           </div>
-        );
-      }
     );
   }
 }
-
 export default App;
