@@ -14,7 +14,7 @@
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
-    "pull-dev-and-merge": "git pull origin development && git merge feature/fed"
+    "pull-dev-and-merge": "git pull origin development && git checkout feature/fed && git merge development"
   },
   "license": "ISC",
   "dependencies": {
@@ -30,7 +30,7 @@
     "react-csv-reader": "^1.1.0",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
-    "react-strap": "^0.0.1",
+    "reactstrap": "^6.5.0",
     "sequelize": "^4.41.2"
   },
   "devDependencies": {

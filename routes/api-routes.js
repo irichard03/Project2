@@ -7,7 +7,7 @@ const db = require("../models");
 module.exports = function(app) {
     const path = require("path");
     app.get("/table", function(req, res) {
-        db.Menu.findall({}).then(function(data) {
+        db.Menu.findAll({}).then(function(data) {
             res.json(data);
         });
     });
