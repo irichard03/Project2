@@ -7,7 +7,6 @@ class App extends Component {
     return (
       <div className="App">
       <Reader />
-      </div>
           //this title has been approved by noone
           <div class="container">
             <div class="container-fluid bg-success">
@@ -22,6 +21,7 @@ class App extends Component {
               <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
             </div>
           </div>
+      </div>
     );
   }
 }
