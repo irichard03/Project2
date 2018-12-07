@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Reader from './Reader';
+import TempTable from './TempTable';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
       <Reader />
-          //this title has been approved by noone
+          //this title has been approved by no-one
           <div class="container">
             <div class="container-fluid bg-success">
               <h1>Italian Resteraunt Mergerator!</h1>
@@ -15,6 +16,7 @@ class App extends Component {
 
             <div class="container bg-dark">
               <h2>I should render things here</h2>
+              <TempTable />
             </div>
 
             <div class="actionDiv">
