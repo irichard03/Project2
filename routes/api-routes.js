@@ -24,8 +24,12 @@ module.exports = function(app) {
 
     //insert user
     app.post("/adduser", function(req, res) {
-        db.User.create(req.body, {
-            fields: [" firstName", "lastName", "userName", "email", "password"]
+        db.User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            userName: req.body.userName,
+            email: req.body.email,
+            password: req.body.password
         }).then(function(data) {
             res.json(data);
         });
