@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Reader from './Reader';
 import TempTable from './TempTable';
+import Signup from './Signup';
 
 class App extends Component {
   render() {
@@ -18,7 +19,9 @@ class App extends Component {
               <h2>I should render things here</h2>
               <TempTable />
             </div>
-
+            <div class="container bg-primary">
+              <Signup />
+            </div>
             <div class="actionDiv">
               <button type="button" class="btn btn-primary btn-lg btn-block" >Get Started</button>
             </div>
