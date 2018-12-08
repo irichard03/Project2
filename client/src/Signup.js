@@ -3,7 +3,7 @@ import './Style.css';
 import axios from 'axios';
 
 //state holds form data
-export default class Signup extends React.Component {
+export default class Signup extends Component {
     state = {
         firstName: '',
         lastName: '',
