@@ -13,7 +13,7 @@ export default class Signup extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        alert(this.state);
+        console.log(this.state);
     }
     //where my jsx goes 
     render(){
@@ -22,16 +22,15 @@ export default class Signup extends React.Component {
                 <input placeholder='First' value={this.state.firstName}
                 onChange={event => this.setState({firstName: event.target.value})} />
                 <input placeholder='Last' value={this.state.lastName}
-                onChange={event => this.setState({firstName: event.target.value})} />
+                onChange={event => this.setState({lastName: event.target.value})} />
                 <input placeholder='userName' value={this.state.userName}
-                onChange={event => this.setState({firstName: event.target.value})} />
+                onChange={event => this.setState({userName: event.target.value})} />
                 <input placeholder='email' value={this.state.email}
-                onChange={event => this.setState({firstName: event.target.value})} />
+                onChange={event => this.setState({email: event.target.value})} />
                 <input placeholder='password' value={this.state.password} type='password'
-                onChange={event => this.setState({firstName: event.target.value})} />
-                <button onCLick={event => this.onSubmit(event)}>Submit</button>
+                onChange={event => this.setState({password: event.target.value})} />
+                <button onClick={event => this.onSubmit(event)}>Submit</button>
             </form>
         );
-        
     }
 }
