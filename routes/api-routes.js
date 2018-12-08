@@ -1,9 +1,6 @@
 //import datbase modles folder for database api calls.
 const db = require("../models");
 
-//import Javascript Web Token (JWT)
-//const passport = require("passport-jwt").Stategy, ExtractJwt =require("passport-jwt").ExtractJwt;
-
 module.exports = function(app) {
     //passport route
     app.get("/authorize", function(req, res) {
@@ -21,6 +18,15 @@ module.exports = function(app) {
     //hardcoded route to employee
     app.get("/employee", function(req, res) {
         db.Employee.findAll({}).then(function(data) {
+            res.json(data);
+        });
+    });
+
+    //insert user
+    app.post("/adduser", function(req, res) {
+        db.User.create(req.body, {
+            fields: [" firstName", "lastName", "userName", "email", "password"]
+        }).then(function(data) {
             res.json(data);
         });
     });
