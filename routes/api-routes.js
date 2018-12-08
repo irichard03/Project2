@@ -5,6 +5,12 @@ const db = require("../models");
 //const passport = require("passport-jwt").Stategy, ExtractJwt =require("passport-jwt").ExtractJwt;
 
 module.exports = function(app) {
+    //passport route
+    app.get("/authorize", function(req, res) {
+        res.send("passported.");
+    });
+
+    //hardcoded route to menu
     const path = require("path");
     app.get("/menu", function(req, res) {
         db.Menu.findAll({}).then(function(data) {
@@ -12,6 +18,7 @@ module.exports = function(app) {
         });
     });
 
+    //hardcoded route to employee
     app.get("/employee", function(req, res) {
         db.Employee.findAll({}).then(function(data) {
             res.json(data);

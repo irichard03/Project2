@@ -8,10 +8,10 @@ class App extends Component {
     return (
       <div className="App">
       <Reader />
-          //this title has been approved by no-one
+          
           <div class="container">
             <div class="container-fluid bg-success">
-              <h1>Italian Resteraunt Mergerator!</h1>
+              <h1>Database Mergeerator!</h1>
             </div>
 
             <div class="container bg-dark">
@@ -20,7 +20,7 @@ class App extends Component {
             </div>
 
             <div class="actionDiv">
-              <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block" >Get Started</button>
             </div>
           </div>
       </div>

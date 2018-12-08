@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import './Style.css';
 import axios from 'axios';
 
 export default class TempTable extends React.Component {
