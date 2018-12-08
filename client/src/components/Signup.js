@@ -16,7 +16,7 @@ export default class Signup extends Component {
         event.preventDefault();
         console.log(this.state);
 
-            axios.post(`http://localhost:3000/adduser`, {
+            axios.post(`/adduser`, {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
                 email: this.state.email,

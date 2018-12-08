@@ -1,6 +1,6 @@
 //import datbase modles folder for database api calls.
 const db = require("../models");
-
+const csvToModel = require("../utils/csvprocess");
 module.exports = function(app) {
     //passport route
     app.get("/authorize", function(req, res) {
@@ -18,6 +18,15 @@ module.exports = function(app) {
     //hardcoded route to employee
     app.get("/employee", function(req, res) {
         db.Employee.findAll({}).then(function(data) {
+            res.json(data);
+        });
+    });
+
+    //csv file import
+    app.post("/csv", function(req, res) {
+        csvToModel.makeColumns(req.body.result, db);
+        console.log(res.body);
+        db.Test.findAll({}).then(function(data) {
             res.json(data);
         });
     });

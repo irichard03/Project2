@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
-import Reader from './Reader';
+import Reader from './components/Reader';
 // import { Tooltip } from 'reactstrap';
-import TempTable from './TempTable';
-import Signup from './Signup';
+import TempTable from './components/TempTable';
+import Signup from './components/Signup';
 
 class App extends Component {
   render() {
     return (
       <div className="App container">
-          <Reader />
           <div className="container">
             <div className="container-fluid bg-success">
               <h1>Database Mergeerator!</h1>
@@ -25,6 +24,7 @@ class App extends Component {
             <div className="actionDiv">
               <button type="button" className="btn btn-primary btn-lg btn-block" >Get Started</button>
             </div>
+          <Reader />
           </div>
       </div>
     );
