@@ -1,8 +1,8 @@
 module.exports = function(sequelize, DataTypes) {
     const Employee = sequelize.define("Employee", {
-        employee_name: DataTypes.STRING,
+        employeeName: DataTypes.STRING,
         wage: DataTypes.DECIMAL(10, 2),
-        employee_position: DataTypes.STRING,
+        employeePosition: DataTypes.STRING,
         shift: DataTypes.INTEGER,
         hireDate: DataTypes.DATE,
         createdAt: {
