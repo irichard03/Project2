@@ -31,7 +31,8 @@
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
     "react-strap": "^0.0.1",
-    "sequelize": "^4.41.2"
+    "sequelize": "^4.41.2",
+    "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

@@ -1,10 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-    const Menu = sequelize.define("Menu", {
-        dish: DataTypes.STRING,
-        dishType: DataTypes.STRING,
-        dishCost: DataTypes.DECIMAL(10, 2),
-        dishPrice: DataTypes.DECIMAL(10, 2),
-        alcohol: DataTypes.BOOLEAN,
+    const Employee = sequelize.define("Employee", {
+        employeeName: DataTypes.STRING,
+        wage: DataTypes.DECIMAL(10, 2),
+        employeePosition: DataTypes.STRING,
+        shift: DataTypes.INTEGER,
+        hireDate: DataTypes.DATE,
         createdAt: {
             type: DataTypes.DATE,
             allowNull: false,
@@ -16,5 +16,5 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: sequelize.literal("CURRENT_TIMESTAMP")
         }
     });
-    return Menu;
+    return Employee;
 };
