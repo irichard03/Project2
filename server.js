@@ -5,6 +5,8 @@
 // *** Dependencies
 // =============================================================
 const express = require("express");
+const passport = require("passport");
+const session = require("express-session");
 
 // Sets up the Express App
 // =============================================================
@@ -25,10 +27,16 @@ app.use(express.static("client/build"));
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app);
-
+//Authentication
+//==============================================================
+app.use(
+    session({ secret: "gizmo cloud", resave: true, saveUninitialized: true })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
