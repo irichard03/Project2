@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import './Style.css';
 import axios from 'axios';
+import Alert from './Alert';
 
 
 //state holds form data
-export default class Signup extends Component {
+export default class Signup extends React.Component {
+    constructor(props) {
+        super(props);
+    }
     state = {
         firstName: '',
         lastName: '',
@@ -25,12 +29,18 @@ export default class Signup extends Component {
                 password: this.state.password
             })
             .then( (response) => {
-                console.log(response);
+                if(response) {
+                    this.props.callbackFromParent("reader");
+                }
+                else {
+                    this.props.callbackFromParent("signUp");
+                    return(
+                        <Alert />
+                    );
+                }
               });
-
-
     }
-    //where my jsx goes 
+     
     render(){
         return(
             <form>
@@ -44,7 +54,7 @@ export default class Signup extends Component {
                 onChange={event => this.setState({email: event.target.value})} />
                 <input placeholder='password' value={this.state.password} type='password'
                 onChange={event => this.setState({password: event.target.value})} />
-                <button onClick={event => this.onSubmit(event)}>Submit</button>
+                <button onClick={event => this.onSubmit(event)}>submit</button>
             </form>
         );
     }
