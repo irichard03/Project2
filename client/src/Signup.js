@@ -25,12 +25,17 @@ export default class Signup extends React.Component {
                 password: this.state.password
             })
             .then( (response) => {
-                console.log(response);
+                if(response) {
+                    alert("this happened!");
+                    this.props.callbackFromParent("signUp");
+                }
+                else {
+                    alert("User exists!");
+                    this.props.callbackFromParent("start");
+                }
               });
-
-
     }
-    //where my jsx goes 
+     
     render(){
         return(
             <form>
@@ -44,7 +49,7 @@ export default class Signup extends React.Component {
                 onChange={event => this.setState({email: event.target.value})} />
                 <input placeholder='password' value={this.state.password} type='password'
                 onChange={event => this.setState({password: event.target.value})} />
-                <button onClick={event => this.onSubmit(event)}>Submit</button>
+                <button onClick={() => this.setState({page: "signUp"})}>submit</button>
             </form>
         );
     }
