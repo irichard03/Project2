@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import './App.css';
+import Reader from './components/Reader';
 
 
 
@@ -12,6 +13,7 @@ class App extends Component {
       <div className="App" >
         <div className="container">
               <Header />
+              <Reader />
               <Main />
               <Footer />
         </div>

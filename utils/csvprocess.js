@@ -17,7 +17,7 @@ if (config.use_env_variable) {
 const queryInterface = sequelize.getQueryInterface();
 
 module.exports = {
-    makeColumns: function (ToBeModel, db) {
+    makeColumns: function(ToBeModel, db) {
         const headers = ToBeModel[0];
         let propList = "";
         let counter = 0;
@@ -41,9 +41,10 @@ module.exports = {
             }
         }
         const query = `DROP TABLE IF EXISTS test; CREATE TABLE test(${propList});`;
-        console.log({ headers });
+        console.log("HEre are headers: ");
+        console.log(headers);
         queryInterface
-            .createTable("test", { headers }, { engine: "mysql" })
+            .createTable("test", headers)
             // eslint-disable-next-line prettier/prettier
             .then((args) => console.log("HI" + args));
         // sequelize.query(query).spread((results, metadata) => {
