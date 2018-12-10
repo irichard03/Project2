@@ -1,6 +1,7 @@
 //contains routes for displaying tables and dynamic page elements.
 import React, { Component } from 'react';
 import Signup from "./Signup";
+import Reader from "./Reader";
 import { Jumbotron, Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
 
@@ -13,7 +14,6 @@ class Main extends Component {
       page: "start"
     }
   }
-
 
   callbackStateChanger = (callbackState) => {
     this.setState({page: callbackState });
@@ -37,6 +37,13 @@ class Main extends Component {
       return(
       <Jumbotron>
         <Signup callbackFromParent={this.callbackStateChanger}/>
+      </Jumbotron>
+      );
+    }
+    else if(this.state.page === "reader" ) {
+      return(
+      <Jumbotron>
+        <Reader callbackFromParent={this.callbackStateChanger}/>
       </Jumbotron>
       );
     }
