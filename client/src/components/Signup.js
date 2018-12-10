@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Style.css';
 import axios from 'axios';
 
+
 //state holds form data
 export default class Signup extends Component {
     state = {
@@ -19,6 +20,7 @@ export default class Signup extends Component {
             axios.post(`/adduser`, {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
+                userName: this.state.userName,
                 email: this.state.email,
                 password: this.state.password
             })
