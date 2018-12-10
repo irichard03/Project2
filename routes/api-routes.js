@@ -26,9 +26,9 @@ module.exports = function(app) {
     app.post("/csv", function(req, res) {
         csvToModel.makeColumns(req.body.result, db);
         console.log(res.body);
-        db.Test.findAll({}).then(function(data) {
-            res.json(data);
-        });
+        // db.Test.findAll({}).then(function(data) {
+        //     res.json(data);
+        // });
     });
 
     //insert user
