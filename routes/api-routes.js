@@ -1,13 +1,45 @@
 //import datbase modles folder for database api calls.
 const db = require("../models");
-
-//import Javascript Web Token (JWT)
-//const passport = require("passport-jwt").Stategy, ExtractJwt =require("passport-jwt").ExtractJwt;
-
+const csvToModel = require("../utils/csvprocess");
 module.exports = function(app) {
+    //passport route
+    app.get("/authorize", function(req, res) {
+        res.send("passported.");
+    });
+
+    //hardcoded route to menu
     const path = require("path");
-    app.get("/table", function(req, res) {
-        db.Menu.findall({}).then(function(data) {
+    app.get("/menu", function(req, res) {
+        db.Menu.findAll({}).then(function(data) {
+            res.json(data);
+        });
+    });
+
+    //hardcoded route to employee
+    app.get("/employee", function(req, res) {
+        db.Employee.findAll({}).then(function(data) {
+            res.json(data);
+        });
+    });
+
+    //csv file import
+    app.post("/csv", function(req, res) {
+        csvToModel.makeColumns(req.body.result, db);
+        console.log(res.body);
+        // db.Test.findAll({}).then(function(data) {
+        //     res.json(data);
+        // });
+    });
+
+    //insert user
+    app.post("/adduser", function(req, res) {
+        db.User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            userName: req.body.userName,
+            email: req.body.email,
+            password: req.body.password
+        }).then(function(data) {
             res.json(data);
         });
     });
