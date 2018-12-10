@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import Signup from "./components/Signup";
 import Reader from "./components/Reader";
-import { Jumbotron, Button } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Jumbotron } from 'reactstrap';
 
 //const Main = (props) => {
 

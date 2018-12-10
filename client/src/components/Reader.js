@@ -14,7 +14,7 @@ export default class Basic extends Component {
 
     const reader = new FileReader();
     reader.onload = function (e) {
-      const csv = reader.result.replace(/\"/g, "");
+      const csv = reader.result.replace(/"/g, "");
       const lines = csv.split("\n");
       const result = [];
       const headers = lines[0].split(";");

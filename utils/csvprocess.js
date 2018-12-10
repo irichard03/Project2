@@ -18,8 +18,9 @@ const queryInterface = sequelize.getQueryInterface();
 
 module.exports = {
     makeColumns: function(ToBeModel, db) {
+        console.log(db);
         const headers = ToBeModel[0];
-        let propList = "";
+        // let propList = "";
         let counter = 0;
         for (const property in headers) {
             if (headers.hasOwnProperty(property)) {
@@ -40,7 +41,7 @@ module.exports = {
                 }
             }
         }
-        const query = `DROP TABLE IF EXISTS test; CREATE TABLE test(${propList});`;
+        // const query = `DROP TABLE IF EXISTS test; CREATE TABLE test(${propList});`;
         console.log("HEre are headers: ");
         console.log(headers);
         queryInterface

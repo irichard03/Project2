@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Style.css';
 import axios from 'axios';
 import Alert from './Alert';
@@ -6,9 +6,9 @@ import Alert from './Alert';
 
 //state holds form data
 export default class Signup extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
     state = {
         firstName: '',
         lastName: '',
