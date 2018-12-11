@@ -4,8 +4,8 @@ import './Style.css';
 import axios from 'axios';
 
 export default class Basic extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = { accepted: [], rejected: [] }
   }
 
