@@ -11,7 +11,6 @@ export default class Basic extends Component {
 
   onDrop(files, rejectFiles) {
     console.log(files);
-
     const reader = new FileReader();
     reader.onload = function (e) {
       const csv = reader.result.replace(/"/g, "");
@@ -29,10 +28,11 @@ export default class Basic extends Component {
 
       console.log(result);
       axios.post(`/csv`, {
-        result
+        result:result,
+        name: this.props.tableName
       })
         .then((response) => {
-          console.log("response");
+          console.log(response);
         });
     }
     const blobFile = new Blob(files);
@@ -51,7 +51,7 @@ export default class Basic extends Component {
       <section>
         <div className="dropzone">
           <Dropzone
-            onDrop={this.onDrop}
+            onDrop={this.onDrop.bind(this)}
             onFileDialogCancel={this.onCancel.bind(this)}
           >
             <p>Try dropping some files here, or click to select files to upload.</p>

@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
 //require sequelize
 //function for csv and function to take first row and make columns and function to generate new model all in object to export
 const Sequelize = require("sequelize");
@@ -17,44 +19,44 @@ if (config.use_env_variable) {
 const queryInterface = sequelize.getQueryInterface();
 
 module.exports = {
-    makeColumns: function(ToBeModel, db) {
-        console.log(db);
-        const headers = ToBeModel[0];
-        // let propList = "";
-        let counter = 0;
+    makeColumns: function(ToBeModel, db, tableName) {
+        const vals = ToBeModel;
+        const headers = Object.assign({}, ToBeModel[0]);
         for (const property in headers) {
             if (headers.hasOwnProperty(property)) {
-                counter++;
                 if (property === "id") {
                     headers[property] = {
                         type: Sequelize.INTEGER,
                         primaryKey: true
                     };
-                    propList += property + " INT PRIMARY KEY, ";
                 } else {
-                    if (counter === Object.keys(headers).length) {
-                        propList += property + " VARCHAR(50)";
-                    } else {
-                        propList += property + " VARCHAR(50), ";
-                    }
                     headers[property] = Sequelize.STRING;
                 }
             }
         }
-        // const query = `DROP TABLE IF EXISTS test; CREATE TABLE test(${propList});`;
-        console.log("HEre are headers: ");
+        console.log("Here are headers?: ");
+        const today = new Date();
+        headers.createdAt = {
+            type: Sequelize.DATE
+        };
+        headers.updatedAt = {
+            type: Sequelize.DATE
+        };
         console.log(headers);
-        queryInterface
-            .createTable("test", headers)
-            // eslint-disable-next-line prettier/prettier
-            .then((args) => console.log("HI" + args));
-        // sequelize.query(query).spread((results, metadata) => {
-        //     console.log("OH HI THERE");
-        //     // Results will be an empty array and metadata will contain the number of affected rows.
-        // });
-        // const Test = sequelize.define("test", headers);
-        // db.Test = Test;
-        // db.sequelize.sync();
-        return headers;
+        vals.forEach((obj) => {
+            obj.createdAt = today;
+            obj.updatedAt = today;
+        });
+        console.log("Here are vals?: ");
+        console.log(vals);
+        queryInterface.createTable(tableName, headers).then((args) =>
+            queryInterface
+                .bulkInsert(tableName, vals.splice(0, vals.length - 1))
+                // eslint-disable-next-line prettier/prettier
+                .then((res) => {
+                    db[tableName] = sequelize.define(tableName, headers);
+                    db.sequelize.sync();
+                })
+        );
     }
 };
