@@ -16,7 +16,8 @@ export default class getTable extends React.Component {
         modifiedName = modifiedName.slice(1);
         modifiedName = firstLetter + modifiedName;
         
-        this.props.callbackfromParent(modifiedName);
+        this.props.callbackTableName(modifiedName);
+        this.props.callbackFromParent("reader");
     }
 
     render() {

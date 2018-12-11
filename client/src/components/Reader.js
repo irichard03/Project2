@@ -3,16 +3,17 @@ import React, { Component } from 'react';
 import './Style.css';
 import axios from 'axios';
 
-export default class Basic extends Component {
-  constructor(props) {
-    super(props)
+export default class Reader extends React.Component {
+  constructor(props){
+    super(props);
     this.state = { 
       files: [] 
     }
   }
 
-  onDrop(files, rejectFiles) {
-    console.log(files);
+  onDrop = (files, rejectFiles) => {
+    console.log(this.props);
+    // console.log(files);
 
     const reader = new FileReader();
     reader.onload = function (e) {
