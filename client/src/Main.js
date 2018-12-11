@@ -2,20 +2,27 @@
 import React, { Component } from 'react';
 import Signup from "./components/Signup";
 import Reader from "./components/Reader";
+import TempTable from "./components/TempTable";
+import GetTable from "./components/getTable";
 import { Jumbotron } from 'reactstrap';
-
-//const Main = (props) => {
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "start"
+      page: "getTable",
+      tempTableName: ""
     }
   }
 
   callbackStateChanger = (callbackState) => {
     this.setState({page: callbackState });
+  }
+  
+  callbackTableName = (callbackTable) => {
+    alert(this.callbackTable);
+    this.setState({tempTableName: callbackTable });
+    alert(this.tempTableName);
   }
 
   displayPage = () => {
@@ -39,10 +46,27 @@ class Main extends Component {
       </Jumbotron>
       );
     }
-    else if(this.state.page === "reader" ) {
+    else if(this.state.page === "getTable" ) {
+      return(
+      <Jumbotron>
+        <GetTable callbackFromParent={this.callbackStateChanger} callbackFromParent={this.callbackTableName}/>
+      </Jumbotron>
+      );
+    }
+   
+    else if(this.state.page === "Reader" ) {
       return(
       <Jumbotron>
         <Reader callbackFromParent={this.callbackStateChanger}/>
+      </Jumbotron>
+      );
+    }
+
+     //Re-order these once reader works.
+     else if(this.state.page === "TempTable" ) {
+      return(
+      <Jumbotron>
+        <TempTable callbackFromParent={this.callbackStateChanger}/>
       </Jumbotron>
       );
     }

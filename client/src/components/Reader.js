@@ -4,9 +4,11 @@ import './Style.css';
 import axios from 'axios';
 
 export default class Basic extends Component {
-  constructor() {
-    super()
-    this.state = { files: [] }
+  constructor(props) {
+    super(props)
+    this.state = { 
+      files: [] 
+    }
   }
 
   onDrop(files, rejectFiles) {
@@ -33,6 +35,7 @@ export default class Basic extends Component {
       })
         .then((response) => {
           console.log("response");
+
         });
     }
     const blobFile = new Blob(files);
