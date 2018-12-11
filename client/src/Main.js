@@ -10,21 +10,22 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "start",
+      page: "getTable",
     }
   }
 
   tempTableName = "";
-
+  
+  //change page render
   callbackStateChanger = (callbackState) => {
     alert(this.tempTableName);
     this.setState({page: callbackState });
   }
-  
+  //get table name from one component and pass it back to reader
   callbackTableName = (table) => {
     this.tempTableName = table;
   }
-
+  //render page based on state
   displayPage = () => {
     if (this.state.page === "start") {
       return (
@@ -57,7 +58,7 @@ class Main extends Component {
     else if(this.state.page === "reader" ) {
       return(
       <Jumbotron>
-        <Reader callbackFromParent={this.callbackStateChanger} tableName={this.tempTableName}/>
+        <Reader callbackFromParent={this.callbackStateChanger}  tableName={this.tempTableName}/>
       </Jumbotron>
       );
     }
@@ -66,7 +67,7 @@ class Main extends Component {
      else if(this.state.page === "tempTable" ) {
       return(
       <Jumbotron>
-        <TempTable callbackFromParent={this.callbackStateChanger}/>
+        <TempTable callbackFromParent={this.callbackStateChanger} tableName={this.tempTableName}/>
       </Jumbotron>
       );
     }
