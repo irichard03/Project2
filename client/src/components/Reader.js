@@ -6,11 +6,11 @@ import axios from 'axios';
 export default class Basic extends Component {
   constructor() {
     super()
-    this.state = { files: [] }
+    this.state = { accepted: [], rejected: [] }
   }
 
-  onDrop(files, rejectFiles) {
-    console.log(files);
+  onDrop(accepted, rejected) {
+    console.log(accepted);
     const reader = new FileReader();
     reader.onload = function (e) {
       const csv = reader.result.replace(/"/g, "");
@@ -35,7 +35,7 @@ export default class Basic extends Component {
           console.log(response);
         });
     }
-    const blobFile = new Blob(files);
+    const blobFile = new Blob(accepted);
     reader.readAsBinaryString(blobFile);
   }
 
@@ -51,6 +51,7 @@ export default class Basic extends Component {
       <section>
         <div className="dropzone">
           <Dropzone
+            accept="text/csv"
             onDrop={this.onDrop.bind(this)}
             onFileDialogCancel={this.onCancel.bind(this)}
           >
