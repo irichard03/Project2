@@ -6,15 +6,15 @@ import Alert from './Alert';
 
 //state holds form data
 export default class Signup extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-    state = {
-        firstName: '',
-        lastName: '',
-        userName: '',
-        email: '',
-        password: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: '',
+            lastName: '',
+            userName: '',
+            email: '',
+            password: ''
+        }
     }
 
     onSubmit = (event) => {
@@ -30,7 +30,7 @@ export default class Signup extends React.Component {
             })
             .then( (response) => {
                 if(response) {
-                    this.props.callbackFromParent("reader");
+                    this.props.callbackFromParent("TempTable");
                 }
                 else {
                     this.props.callbackFromParent("signUp");
