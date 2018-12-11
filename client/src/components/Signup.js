@@ -30,7 +30,7 @@ export default class Signup extends React.Component {
             })
             .then( (response) => {
                 if(response) {
-                    this.props.callbackFromParent("TempTable");
+                    this.props.callbackFromParent("getTable");
                 }
                 else {
                     this.props.callbackFromParent("signUp");

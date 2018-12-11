@@ -16,13 +16,14 @@ class Main extends Component {
   }
 
   callbackStateChanger = (callbackState) => {
-    this.setState({page: callbackState });
+    alert(callbackState);
+    this.setState = ({page: callbackState });
   }
   
-  callbackTableName = (callbackTable) => {
-    alert(this.callbackTable);
-    this.setState({tempTableName: callbackTable });
-    alert(this.tempTableName);
+  callbackTableName = (blah) => {
+    alert(blah);
+    this.state.tempTableName = blah;
+    alert(blah);
   }
 
   displayPage = () => {
@@ -32,7 +33,7 @@ class Main extends Component {
           <h1 className="display-3">Desolate Headlands</h1>
           <p className="lead">Data merging simplified</p>
           <hr className="my-2" />
-          <p>Import, define and merge your data.</p>
+          <p>Import, define and merge your data. </p>
           <p className="lead">
           <button color="primary" onClick={() => this.setState({page: "signUp"})}>Get Started</button>
           </p>
@@ -49,7 +50,7 @@ class Main extends Component {
     else if(this.state.page === "getTable" ) {
       return(
       <Jumbotron>
-        <GetTable callbackFromParent={this.callbackStateChanger} callbackFromParent={this.callbackTableName}/>
+        <GetTable callbackFromParent={this.callbackStateChanger} callbackTableName={this.callbackTableName}/>
       </Jumbotron>
       );
     }
