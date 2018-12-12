@@ -28,7 +28,7 @@ module.exports = function(app) {
     });
 
     //dynamic query
-    app.get("/show/:table", function(req, res) {
+    app.get("/show/:table", function(req) {
         let myTable = req.params.table;
         myTable = myTable.toLowerCase();
         sequelize.query("SELECT * FROM " + myTable + ";").then(function(data) {
