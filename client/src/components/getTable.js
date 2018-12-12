@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
-export default class getTable extends React.Component {
+export default class GetTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

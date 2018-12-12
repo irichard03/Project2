@@ -3,18 +3,17 @@ import React, { Component } from 'react';
 import './Style.css';
 import axios from 'axios';
 
-export default class Reader extends Component {
+export default class Reader extends React.Component {
   constructor(props) {
     super(props);
     this.state = { files: [] }
   }
 
   onDrop = (files, rejected) => {
-    console.log(this.props);
     // console.log(files);
     const newTableName = this.props.tableName;
     const reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = (e) => {
       const csv = reader.result.replace(/"/g, "");
       const lines = csv.split("\n");
       const result = [];
@@ -28,19 +27,17 @@ export default class Reader extends Component {
         result.push(obj);
       }
 
-      console.log(result);
       axios.post(`/csv`, {
         result: result,
         name: newTableName
       })
         .then((response) => {
-          console.log(response);
+          this.props.callbackFromParent("tempTable");
         });
     }
     const blobFile = new Blob(files);
     reader.readAsBinaryString(blobFile);
   }
-
 
   onCancel() {
     this.setState({

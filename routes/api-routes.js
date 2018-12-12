@@ -1,24 +1,38 @@
-//import datbase modles folder for database api calls.
+//import datbase models folder for database api calls.
 const db = require("../models");
 const csvToModel = require("../utils/csvprocess");
+const Sequelize = require("sequelize");
+require("dotenv").config();
+
+const sequelize = new Sequelize(
+    process.env.DBHOST,
+    process.env.DBUSER,
+    process.env.DBPASS,
+    {
+        dialect: "mysql"
+    }
+);
+const path = require("path");
+
 module.exports = function(app) {
-    //passport route
+    //passport route reserved, not implemented
     app.get("/authorize", function(req, res) {
         res.send("passported.");
     });
 
     //hardcoded route to menu
-    const path = require("path");
     app.get("/menu", function(req, res) {
         db.Menu.findAll({}).then(function(data) {
             res.json(data);
         });
     });
 
-    //hardcoded route to employee
-    app.get("/employee", function(req, res) {
-        db.Employee.findAll({}).then(function(data) {
-            res.json(data);
+    //dynamic query
+    app.get("/show/:table", function(req, res) {
+        let myTable = req.params.table;
+        myTable = myTable.toLowerCase();
+        sequelize.query("SELECT * FROM " + myTable + ";").then(function(data) {
+            console.log(data);
         });
     });
 
