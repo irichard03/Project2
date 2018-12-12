@@ -14,7 +14,6 @@ export default class TempTable extends Component {
       .then(res => {
         const tableData = res.data;
         this.setState({ tableData });
-        // alert('This happened');
         console.log(tableData);
       })
   }
@@ -25,31 +24,34 @@ export default class TempTable extends Component {
         <Table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Animal</th>
+              <th>Name</th>
+              <th>Age</th>
+              <th>Disposition</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td>Bobcat</td>
+              <td>Bob</td>
+              <td>6</td>
+              <td>Ferocious</td>
             </tr>
             <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <td>Dog</td>
+              <td>Rufus</td>
+              <td>4</td>
+              <td>Dumb</td>
             </tr>
             <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <td>Cat</td>
+              <td>Belial</td>
+              <td>6</td>
+              <td>Posessed</td>
             </tr>
+          {this.state.tableData.map((tuple, index) => (
+            <h1>{tuple}</h1>
+          ))}
           </tbody>
         </Table>
       </div>
