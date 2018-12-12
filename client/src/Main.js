@@ -11,7 +11,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "headerSelect",
+      page: "tempTable",
     }
   }
 
@@ -19,7 +19,6 @@ class Main extends Component {
   
   //change page render
   callbackStateChanger = (callbackState) => {
-    alert(this.tempTableName);
     this.setState({page: callbackState });
   }
   //get table name from one component and pass it back to reader

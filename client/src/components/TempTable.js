@@ -52,13 +52,6 @@ export default class TempTable extends Component {
             </tr>
           </tbody>
         </Table>
-        <table>
-          <tbody>
-            {this.state.tableData.map(tableData => <tr><td>{tableData.dish}</td>
-              <td>{tableData.dishType}</td><td>{tableData.dishCost}</td><td>{tableData.dishPrice}</td>
-              <td>{tableData.alcohol}</td><td>{tableData.createdAt}</td><td>{tableData.updatedAt}</td></tr>)}
-          </tbody>
-        </table>
       </div>
     )
   }
