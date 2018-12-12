@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 import './Style.css';
 import axios from 'axios';
 
-export default class Basic extends Component {
-  constructor() {
-    super()
+export default class Reader extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = { files: [] }
   }
 
-  onDrop(files, rejectFiles) {
-    console.log(files);
-
+  onDrop = (files, rejected) => {
+    // console.log(files);
+    const newTableName = this.props.tableName;
     const reader = new FileReader();
-    reader.onload = function (e) {
+    reader.onload = (e) => {
       const csv = reader.result.replace(/"/g, "");
       const lines = csv.split("\n");
       const result = [];
@@ -27,18 +27,17 @@ export default class Basic extends Component {
         result.push(obj);
       }
 
-      console.log(result);
       axios.post(`/csv`, {
-        result
+        result: result,
+        name: newTableName
       })
         .then((response) => {
-          console.log("response");
+          this.props.callbackFromParent("tempTable");
         });
     }
     const blobFile = new Blob(files);
     reader.readAsBinaryString(blobFile);
   }
-
 
   onCancel() {
     this.setState({
@@ -51,7 +50,7 @@ export default class Basic extends Component {
       <section>
         <div className="dropzone">
           <Dropzone
-            onDrop={this.onDrop}
+            onDrop={this.onDrop.bind(this)}
             onFileDialogCancel={this.onCancel.bind(this)}
           >
             <p>Try dropping some files here, or click to select files to upload.</p>

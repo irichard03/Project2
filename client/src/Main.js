@@ -2,22 +2,31 @@
 import React, { Component } from 'react';
 import Signup from "./components/Signup";
 import Reader from "./components/Reader";
+import TempTable from "./components/TempTable";
+import GetTable from "./components/GetTable";
+import HeaderSelect from "./components/HeaderSelect";
 import { Jumbotron } from 'reactstrap';
-
-//const Main = (props) => {
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "start"
+      page: "headerSelect",
     }
   }
 
+  tempTableName = "";
+  
+  //change page render
   callbackStateChanger = (callbackState) => {
+    alert(this.tempTableName);
     this.setState({page: callbackState });
   }
-
+  //get table name from one component and pass it back to reader
+  callbackTableName = (table) => {
+    this.tempTableName = table;
+  }
+  //render page based on state
   displayPage = () => {
     if (this.state.page === "start") {
       return (
@@ -25,7 +34,7 @@ class Main extends Component {
           <h1 className="display-3">Desolate Headlands</h1>
           <p className="lead">Data merging simplified</p>
           <hr className="my-2" />
-          <p>Import, define and merge your data.</p>
+          <p>Import, define and merge your data. </p>
           <p className="lead">
           <button color="primary" onClick={() => this.setState({page: "signUp"})}>Get Started</button>
           </p>
@@ -39,13 +48,40 @@ class Main extends Component {
       </Jumbotron>
       );
     }
-    else if(this.state.page === "reader" ) {
+    else if(this.state.page === "getTable" ) {
       return(
       <Jumbotron>
-        <Reader callbackFromParent={this.callbackStateChanger}/>
+        <GetTable callbackFromParent={this.callbackStateChanger} callbackTableName={this.callbackTableName}/>
       </Jumbotron>
       );
     }
+   
+    else if(this.state.page === "reader" ) {
+      return(
+      <Jumbotron>
+        <Reader callbackFromParent={this.callbackStateChanger}  tableName={this.tempTableName}/>
+      </Jumbotron>
+      );
+    }
+
+    else if(this.state.page === "headerSelect" ) {
+      return(
+      <Jumbotron>
+        <HeaderSelect callbackFromParent={this.callbackStateChanger} tableName={this.tempTableName}/>
+      </Jumbotron>
+      );
+    }
+
+     //Re-order these once reader works.
+     else if(this.state.page === "tempTable" ) {
+      return(
+      <Jumbotron>
+        <TempTable callbackFromParent={this.callbackStateChanger} tableName={this.tempTableName}/>
+      </Jumbotron>
+      );
+    }
+
+    
   }
   
   render() {

@@ -6,21 +6,19 @@ import Alert from './Alert';
 
 //state holds form data
 export default class Signup extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-    state = {
-        firstName: '',
-        lastName: '',
-        userName: '',
-        email: '',
-        password: '',
+    constructor(props) {
+        super(props);
+        this.state = {
+            firstName: '',
+            lastName: '',
+            userName: '',
+            email: '',
+            password: ''
+        }
     }
 
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
-
             axios.post(`/adduser`, {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
@@ -30,7 +28,7 @@ export default class Signup extends React.Component {
             })
             .then( (response) => {
                 if(response) {
-                    this.props.callbackFromParent("reader");
+                    this.props.callbackFromParent("getTable");
                 }
                 else {
                     this.props.callbackFromParent("signUp");
