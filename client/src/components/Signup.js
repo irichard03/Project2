@@ -19,8 +19,6 @@ export default class Signup extends React.Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
-
             axios.post(`/adduser`, {
                 firstName: this.state.firstName,
                 lastName: this.state.lastName,
