@@ -32,7 +32,7 @@ module.exports = function(app) {
         let myTable = req.params.table;
         myTable = myTable.toLowerCase();
         sequelize.query("SELECT * FROM " + myTable + ";").then(function(data) {
-            console.log(data);
+            res.json(data);
         });
     });
 
