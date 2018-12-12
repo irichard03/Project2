@@ -19,6 +19,7 @@ export default class Reader extends Component {
       const lines = csv.split("\n");
       const result = [];
       const headers = lines[0].split(";");
+      const headerLength = headers.length;
       for (let i = 1; i < lines.length; i++) {
         const obj = {};
         const currentline = lines[i].split(";");

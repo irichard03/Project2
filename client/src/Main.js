@@ -4,6 +4,7 @@ import Signup from "./components/Signup";
 import Reader from "./components/Reader";
 import TempTable from "./components/TempTable";
 import GetTable from "./components/getTable";
+import NewTable from "./components/newTable";
 import { Jumbotron } from 'reactstrap';
 
 class Main extends Component {
@@ -64,6 +65,13 @@ class Main extends Component {
 
      //Re-order these once reader works.
      else if(this.state.page === "tempTable" ) {
+      return(
+      <Jumbotron>
+        <TempTable callbackFromParent={this.callbackStateChanger}/>
+      </Jumbotron>
+      );
+    }
+    else if(this.state.page === "newTable" ) {
       return(
       <Jumbotron>
         <TempTable callbackFromParent={this.callbackStateChanger}/>
