@@ -32,7 +32,7 @@ export default class Reader extends React.Component {
         name: newTableName
       })
         .then((response) => {
-          this.props.callbackFromParent("tempTable");
+          this.props.callbackFromParent("headerSelect");
         });
     }
     const blobFile = new Blob(files);

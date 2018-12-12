@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Signup from "./components/Signup";
 import Reader from "./components/Reader";
 import TempTable from "./components/TempTable";
-import GetTable from "./components/GetTable";
+import GetTable from "./components/getTable";
 import HeaderSelect from "./components/HeaderSelect";
 import { Jumbotron } from 'reactstrap';
 
@@ -11,7 +11,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "headerSelect",
+      page: "start",
     }
   }
 
