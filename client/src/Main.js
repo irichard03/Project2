@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 import Signup from "./components/Signup";
 import Reader from "./components/Reader";
 import TempTable from "./components/TempTable";
-import GetTable from "./components/getTable";
+import GetTable from "./components/GetTable";
+import HeaderSelect from "./components/HeaderSelect";
 import { Jumbotron } from 'reactstrap';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: "getTable",
+      page: "headerSelect",
     }
   }
 
@@ -63,6 +64,14 @@ class Main extends Component {
       );
     }
 
+    else if(this.state.page === "headerSelect" ) {
+      return(
+      <Jumbotron>
+        <HeaderSelect callbackFromParent={this.callbackStateChanger} tableName={this.tempTableName}/>
+      </Jumbotron>
+      );
+    }
+
      //Re-order these once reader works.
      else if(this.state.page === "tempTable" ) {
       return(
@@ -71,6 +80,8 @@ class Main extends Component {
       </Jumbotron>
       );
     }
+
+    
   }
   
   render() {
