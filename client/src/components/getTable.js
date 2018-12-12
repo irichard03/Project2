@@ -22,13 +22,17 @@ export default class GetTable extends React.Component {
 
     render() {
     return (
-      <Form>
-        <FormGroup>
-          <Label for="exampleSelect">Select</Label>
-          <input placeholder='Table Name' value={this.state.tableName} onChange={event => this.setState({tableName: event.target.value})} />
-        </FormGroup>    
-        <Button onClick={event => this.upperCasererAtor(event)}>Submit</Button>
-      </Form>
+      <div>
+        <p className="lead">Table Import</p>
+            <hr className="my-2" />
+            <p>Please enter the name for your table.</p>
+        <Form>
+          <FormGroup>
+            <Input placeholder='Table Name' value={this.state.tableName} onChange={event => this.setState({tableName: event.target.value})} />
+          </FormGroup>    
+          <Button onClick={event => this.upperCasererAtor(event)}>Submit</Button>
+        </Form>
+      </div>
     );
   }
 }
