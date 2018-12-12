@@ -8,8 +8,9 @@ export default class TempTable extends Component {
     tableData: []
   }
 
-  componentDidMount() {
-    axios.get(`http://localhost:3000/menu/`)
+  componentDidMount=() => {
+    let table = this.props.tableName.toLowerCase();
+    axios.get(`http://localhost:3000/show/${table}/`, )
       .then(res => {
         const tableData = res.data;
         this.setState({ tableData });
